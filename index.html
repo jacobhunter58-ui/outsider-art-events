@@ -147,6 +147,8 @@ section { scroll-margin-top: 80px; }
 .direct { display: grid; gap: 24px; align-content: start; }
 .direct .row { display: grid; gap: 8px; padding-bottom: 20px; border-bottom: 1px solid var(--rule-light); }
 .direct .val { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-weight: 800; font-size: 22px; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.direct .val a { text-decoration: none; }
+.direct .val a:hover { text-decoration: underline; }
 .copy { background: none; border: 1px solid var(--rule-light); color: var(--ink); font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; min-height: 36px; padding: 0 12px; cursor: pointer; }
 .copy:hover { border-color: var(--ink); }
 form { display: grid; gap: 18px; }
@@ -429,11 +431,7 @@ form { display: grid; gap: 18px; }
         <div class="direct">
           <div class="row">
             <div class="label">Email</div>
-            <div class="val"><span id="email-text">[EMAIL]</span><button class="copy" type="button" id="copy-email">Copy</button></div>
-          </div>
-          <div class="row">
-            <div class="label">Phone</div>
-            <div class="val">[PHONE]</div>
+            <div class="val"><a id="email-text" href="mailto:info@outsiderevents.co.uk">info@outsiderevents.co.uk</a><button class="copy" type="button" id="copy-email">Copy</button></div>
           </div>
           <div class="row">
             <div class="label">Based in</div>
@@ -586,7 +584,7 @@ form { display: grid; gap: 18px; }
       sent.hidden = false;
       btnSend.textContent = 'Sent';
     }).catch(function () {
-      err.textContent = 'Your enquiry could not be sent. Please try again, or email us directly.';
+      err.textContent = 'Your enquiry could not be sent. Please try again, or email info@outsiderevents.co.uk.';
       err.hidden = false;
       btnSend.disabled = false; btnSend.textContent = 'Send enquiry';
     });
