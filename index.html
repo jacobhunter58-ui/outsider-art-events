@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outsider Art Events</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0E0E0E">
+<meta property="og:title" content="Outsider Art Events">
+<meta property="og:description" content="Culture-led events from Glasgow. Producers of the Glasgow Tattoo Convention, SEC Glasgow, 21–23 June 2028.">
+<meta property="og:type" content="website">
+<meta name="description" content="Outsider Art Events produces culture-led events from Glasgow. Producers of the Glasgow Tattoo Convention, SEC Glasgow, 21–23 June 2028.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: black-first institutional grid. Hard edges, flush left, one oxblood square per section breaking out of the grid. */
+:root {
+  --ink: #0E0E0E;
+  --ink-2: #161615;
+  --line: #2B2A28;
+  --bone: #E8E4DC;
+  --paper: #F4F2EE;
+  --concrete: #A9A6A1;
+  --stone: #5C5A57;
+  --rule-light: #C9C4BA;
+  --oxblood: #6B2E2A;
+  --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --body: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+  --wrap: 1240px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body { background: var(--ink); color: var(--bone); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--bone); outline-offset: 3px; }
+
+.band { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: var(--wrap); margin: 0 auto; }
+.sq { display: inline-block; width: .32em; height: .32em; background: var(--oxblood); vertical-align: baseline; margin-left: .14em; }
+
+.label { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--concrete); }
+.light .label { color: var(--stone); }
+
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+h2 { font-weight: 900; font-size: clamp(36px, 5.4vw, 72px); line-height: .92; letter-spacing: -.035em; }
+h3 { font-weight: 800; font-size: 24px; line-height: 1.1; letter-spacing: -.02em; }
+p { margin: 0; max-width: 62ch; }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; font-family: var(--display); font-weight: 800; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+.btn-solid { background: var(--bone); color: var(--ink); }
+.btn-solid:hover { background: #FFFFFF; }
+.btn-line { border-color: var(--stone); color: var(--bone); background: transparent; }
+.btn-line:hover { border-color: var(--bone); }
+.light .btn-solid { background: var(--ink); color: var(--bone); }
+.light .btn-solid:hover { background: #2B2A28; }
+
+/* Header */
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); border-bottom: 1px solid var(--line); }
+.head-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 72px; }
+.mark { font-family: var(--display); font-weight: 900; font-size: 18px; letter-spacing: -.02em; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+.nav { display: flex; align-items: center; gap: 32px; }
+.nav a.link { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--concrete); padding: 12px 0; }
+.nav a.link:hover { color: var(--bone); }
+.menu-btn { display: none; background: none; border: 1px solid var(--stone); color: var(--bone); font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; min-height: 44px; padding: 0 16px; cursor: pointer; }
+.mobile-nav { border-top: 1px solid var(--line); padding-block: 8px 20px; display: grid; }
+.mobile-nav a { font-family: var(--display); font-weight: 800; font-size: 28px; letter-spacing: -.02em; text-decoration: none; padding: 10px 0; border-bottom: 1px solid var(--line); }
+
+/* Hero */
+.hero { padding-block: clamp(56px, 9vw, 120px) 0; }
+.hero-grid { display: grid; gap: 32px; }
+.hero h1 { font-weight: 900; font-size: clamp(48px, 9.2vw, 132px); line-height: .86; letter-spacing: -.045em; text-transform: uppercase; max-width: 12ch; }
+.hero h1 .sq { width: .26em; height: .26em; }
+.hero-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px; }
+.hero-foot p { font-size: 19px; color: #CFCBC3; max-width: 46ch; }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.next { margin-top: clamp(56px, 8vw, 96px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.next a { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 26px; text-decoration: none; }
+.next .t { font-family: var(--display); font-weight: 900; font-size: clamp(24px, 3.4vw, 40px); letter-spacing: -.03em; text-transform: uppercase; line-height: .95; margin-top: 8px; }
+.next svg { flex: none; transition: transform .2s; }
+.next a:hover svg { transform: translateX(6px); }
+
+/* Sections */
+section { scroll-margin-top: 80px; }
+.sec { padding-block: clamp(72px, 10vw, 140px); }
+.sec-head { display: grid; gap: 20px; margin-bottom: clamp(40px, 6vw, 72px); }
+.light { background: var(--paper); color: var(--ink); }
+.light p { color: #2B2A28; }
+
+/* Event */
+.event { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2px; background: var(--line); border: 1px solid var(--line); }
+.event > div { background: var(--ink); padding: clamp(24px, 3.4vw, 44px); min-width: 0; }
+.event .poster { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 64px; min-height: 460px; background: var(--ink-2); }
+.event .poster::after { content: ""; position: absolute; right: -14px; top: 38%; width: 28px; height: 28px; background: var(--oxblood); }
+.poster .t { font-family: var(--display); font-weight: 900; font-size: clamp(44px, 6.4vw, 92px); line-height: .86; letter-spacing: -.04em; text-transform: uppercase; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px; }
+.facts dt { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--concrete); }
+.facts dd { margin: 6px 0 0; font-weight: 800; font-size: 20px; letter-spacing: -.01em; line-height: 1.2; }
+.audiences { display: grid; gap: 0; margin-top: 36px; border-top: 1px solid var(--line); }
+.audiences div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.audiences b { font-weight: 800; font-size: 18px; }
+.audiences span { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--concrete); text-align: right; }
+
+/* Services */
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 2px solid var(--ink); }
+.svc { padding: 32px 32px 40px 0; border-bottom: 1px solid var(--rule-light); display: grid; gap: 14px; align-content: start; min-width: 0; }
+.svc:nth-child(even) { padding-left: 32px; padding-right: 0; border-left: 1px solid var(--rule-light); }
+.svc ul { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-family: var(--mono); font-size: 13px; color: var(--stone); }
+.svc li::before { content: "— "; }
+
+/* Manifesto */
+.manifesto { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.manifesto .big { font-family: var(--display); font-weight: 900; font-size: clamp(40px, 6vw, 84px); line-height: .9; letter-spacing: -.04em; text-transform: uppercase; }
+.rules { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.rules div { padding-block: 22px; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+.rules b { font-weight: 800; font-size: 20px; letter-spacing: -.01em; }
+.rules p { color: #CFCBC3; font-size: 16px; }
+
+/* Partners */
+.partner-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.pcard { background: var(--ink); color: var(--bone); padding: clamp(28px, 3.6vw, 48px); display: grid; gap: 22px; align-content: start; min-width: 0; }
+.pcard p { color: #CFCBC3; }
+.pcard ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.pcard li { padding-block: 12px; border-bottom: 1px solid var(--line); font-size: 16px; }
+.pcard .label { color: var(--concrete); }
+.pcard.oxblood { background: var(--oxblood); }
+.pcard.oxblood p, .pcard.oxblood li { color: var(--bone); }
+.pcard.oxblood ul, .pcard.oxblood li { border-color: rgba(232,228,220,.28); }
+.pcard.oxblood .label { color: #E2CFC9; }
+
+/* Pipeline */
+.pipeline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; background: var(--line); border: 1px solid var(--line); }
+.pipeline > div { background: var(--ink); padding: 28px; display: grid; gap: 40px; align-content: space-between; min-height: 220px; min-width: 0; }
+.pipeline .t { font-family: var(--display); font-weight: 900; font-size: 30px; line-height: .92; letter-spacing: -.03em; text-transform: uppercase; }
+.pipeline .muted .t { color: var(--stone); }
+.pipeline .yr { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--concrete); }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 96px); }
+.direct { display: grid; gap: 24px; align-content: start; }
+.direct .row { display: grid; gap: 8px; padding-bottom: 20px; border-bottom: 1px solid var(--rule-light); }
+.direct .val { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-weight: 800; font-size: 22px; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.copy { background: none; border: 1px solid var(--rule-light); color: var(--ink); font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; min-height: 36px; padding: 0 12px; cursor: pointer; }
+.copy:hover { border-color: var(--ink); }
+form { display: grid; gap: 18px; }
+.f2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.field { display: grid; gap: 8px; min-width: 0; }
+.field label { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--stone); }
+.field input, .field select, .field textarea { width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: #FFFFFF; border: 1px solid var(--rule-light); border-radius: 0; padding: 13px 14px; color-scheme: light; }
+.field textarea { min-height: 150px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--ink); outline-offset: 0; border-color: var(--ink); }
+.form-note { font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--stone); }
+.sent { background: var(--ink); color: var(--bone); padding: 18px 20px; font-size: 15px; display: flex; gap: 12px; align-items: flex-start; }
+.sent .sq { flex: none; margin: 6px 0 0; width: 10px; height: 10px; }
+
+/* Footer */
+.foot { padding-block: 64px 40px; border-top: 1px solid var(--line); }
+.foot-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; align-items: flex-end; }
+.foot-mark { font-family: var(--display); font-weight: 900; font-size: clamp(48px, 7vw, 96px); line-height: .86; letter-spacing: -.04em; text-transform: uppercase; }
+.foot-links { display: grid; grid-template-columns: repeat(2, auto); gap: 10px 48px; font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.foot-links a { text-decoration: none; color: var(--concrete); padding: 4px 0; }
+.foot-links a:hover { color: var(--bone); }
+.legal { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
+
+@media (max-width: 900px) {
+  .nav a.link, .nav .btn { display: none; }
+  .menu-btn { display: inline-flex; align-items: center; }
+  .event, .manifesto, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+  .event .poster { min-height: 340px; }
+  .event .poster::after { right: 10px; top: 24px; }
+  .pipeline { grid-template-columns: minmax(0, 1fr); }
+  .pipeline > div { min-height: 0; gap: 28px; }
+}
+@media (max-width: 680px) {
+  body { font-size: 16px; }
+  .services, .partner-grid, .f2 { grid-template-columns: minmax(0, 1fr); }
+  .svc, .svc:nth-child(even) { padding: 28px 0 32px; border-left: 0; }
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .foot-links { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+<header class="site-head band">
+  <div class="wrap">
+    <div class="head-row">
+      <a class="mark" href="#top">Outsider Art Events<span class="sq"></span></a>
+      <nav class="nav" aria-label="Main">
+        <a class="link" href="#events">Events</a>
+        <a class="link" href="#what-we-do">What we do</a>
+        <a class="link" href="#partners">Partners</a>
+        <a class="link" href="#contact">Contact</a>
+        <a class="btn btn-solid" href="#contact">Partner with us</a>
+        <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+      </nav>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <a href="#events">Events</a>
+      <a href="#what-we-do">What we do</a>
+      <a href="#partners">Partners</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero band" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="label">Events management — Glasgow</div>
+      <h1 id="hero-title">Culture, delivered properly<span class="sq"></span></h1>
+      <div class="hero-foot">
+        <p>We produce culture-led events with the rigour of an institution. Venues, contracts, artists, ticketing and safety are handled before the doors open, so the work on show can be as unconventional as it likes.</p>
+        <div class="ctas">
+          <a class="btn btn-solid" href="#partners">Partner with us</a>
+          <a class="btn btn-line" href="#events">Our events</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap next">
+      <a href="#events">
+        <div>
+          <div class="label">Next — SEC Glasgow — 21–23.06.2028</div>
+          <div class="t">Glasgow Tattoo Convention</div>
+        </div>
+        <svg aria-hidden="true" width="40" height="22" viewBox="0 0 40 22"><path d="M0 11 H37 M27 2 L37 11 L27 20" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec band" id="events" aria-labelledby="events-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">Our events</div>
+        <h2 id="events-title">The first one<span class="sq"></span></h2>
+      </div>
+      <div class="event">
+        <div class="poster">
+          <div class="label">An Outsider Art Events production</div>
+          <div class="t">Glasgow<br>Tattoo<br>Convention</div>
+          <div class="label" style="color: var(--bone)">SEC Glasgow — June 2028</div>
+        </div>
+        <div>
+          <dl class="facts">
+            <div><dt>Venue</dt><dd>SEC Glasgow</dd></div>
+            <div><dt>Dates</dt><dd>21–23 June 2028</dd></div>
+            <div><dt>Artist applications</dt><dd>Open [DATE]</dd></div>
+            <div><dt>Tickets</dt><dd>On sale [DATE]</dd></div>
+          </dl>
+          <div class="audiences">
+            <div><b>Artists</b><span>Booth applications</span></div>
+            <div><b>Visitors</b><span>Day and full passes</span></div>
+            <div><b>Trade &amp; suppliers</b><span>Exhibitor space</span></div>
+          </div>
+          <div class="ctas" style="margin-top: 32px">
+            <a class="btn btn-solid" href="#contact">Register interest</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec band light" id="what-we-do" aria-labelledby="wwd-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">What we do</div>
+        <h2 id="wwd-title">We carry the risk, end to end<span class="sq"></span></h2>
+        <p>Outsider Art Events is the contracting company behind every event we run. One accountable team, from the first venue conversation to the final load-out.</p>
+      </div>
+      <div class="services">
+        <div class="svc">
+          <h3>Venue and production</h3>
+          <p>Venue contracts, floor plans, build, power, security and health and safety, delivered to the standard large venues expect.</p>
+          <ul><li>Venue contracting</li><li>Site plans and build</li><li>Event safety management</li></ul>
+        </div>
+        <div class="svc">
+          <h3>Artists and exhibitors</h3>
+          <p>Curated selection, clear agreements and a well-run show floor, so the people the event is built around can do their best work.</p>
+          <ul><li>Applications and curation</li><li>Artist agreements</li><li>On-site artist support</li></ul>
+        </div>
+        <div class="svc">
+          <h3>Ticketing and audience</h3>
+          <p>Ticketing, marketing and visitor experience, from the first announcement to the doors opening and the crowd going home.</p>
+          <ul><li>Ticketing and access</li><li>Campaigns and media</li><li>Visitor services</li></ul>
+        </div>
+        <div class="svc">
+          <h3>Partnerships</h3>
+          <p>Sponsorship and brand partnerships built around the audience, with clear packages and straight reporting afterwards.</p>
+          <ul><li>Sponsorship packages</li><li>Brand activations</li><li>Post-event reporting</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec band" aria-labelledby="approach-title">
+    <div class="wrap manifesto">
+      <div style="display: grid; gap: 20px">
+        <div class="label">Our approach</div>
+        <h2 id="approach-title" class="big">From the outside, in<span class="sq"></span></h2>
+      </div>
+      <div class="rules">
+        <div><b>Structure first.</b><p>Contracts, insurance and logistics are settled early and properly. That is what lets the creative side take risks.</p></div>
+        <div><b>Respect for the craft.</b><p>Every event is built around the artists and the community who make it, with their input from the start.</p></div>
+        <div><b>Straight answers.</b><p>Venues, sponsors and artists always know what is agreed, what it costs and when it happens.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec band light" id="partners" aria-labelledby="partners-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">Partners</div>
+        <h2 id="partners-title">Put your name beside ours<span class="sq"></span></h2>
+      </div>
+      <div class="partner-grid">
+        <div class="pcard">
+          <div class="label">For venues</div>
+          <h3>A producer that turns up prepared</h3>
+          <p>We bring a full event plan, a named contracting entity and an operations team that works to your procedures.</p>
+          <ul><li>Single point of contact</li><li>Event safety documentation</li><li>Multi-day, multi-hall programmes</li></ul>
+        </div>
+        <div class="pcard oxblood">
+          <div class="label">For sponsors</div>
+          <h3>A committed audience, reached properly</h3>
+          <p>Partnership packages for Glasgow Tattoo Convention 2028 are in development. Ask for the prospectus when it is ready.</p>
+          <ul><li>Headline and hall partnerships</li><li>On-site activations</li><li>Audience and results reporting</li></ul>
+        </div>
+      </div>
+      <div class="ctas" style="margin-top: 32px">
+        <a class="btn btn-solid" href="#contact">Request the prospectus</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec band" aria-labelledby="pipeline-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">The programme</div>
+        <h2 id="pipeline-title">The first of many<span class="sq"></span></h2>
+      </div>
+      <div class="pipeline">
+        <div><span class="yr">2028</span><span class="t">Glasgow Tattoo Convention</span></div>
+        <div class="muted"><span class="yr">[YEAR]</span><span class="t">[Next event]</span></div>
+        <div class="muted"><span class="yr">[YEAR]</span><span class="t">[Future event]</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec band light" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="label">Contact</div>
+        <h2 id="contact-title">Talk to us<span class="sq"></span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="direct">
+          <div class="row">
+            <div class="label">Email</div>
+            <div class="val"><span id="email-text">[EMAIL]</span><button class="copy" type="button" id="copy-email">Copy</button></div>
+          </div>
+          <div class="row">
+            <div class="label">Phone</div>
+            <div class="val">[PHONE]</div>
+          </div>
+          <div class="row">
+            <div class="label">Based in</div>
+            <div class="val">Glasgow, Scotland</div>
+          </div>
+          <div class="row">
+            <div class="label">Instagram</div>
+            <div class="val">[@HANDLE]</div>
+          </div>
+        </div>
+        <form id="enquiry" name="enquiry" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="enquiry">
+          <p hidden><label>Leave this empty <input name="bot-field"></label></p>
+          <div class="f2">
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="f-org">Organisation</label><input id="f-org" name="organisation" autocomplete="organization"></div>
+          </div>
+          <div class="f2">
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="f-type">Enquiry</label>
+              <select id="f-type" name="type">
+                <option>Sponsorship</option>
+                <option>Venue</option>
+                <option>Artist or exhibitor</option>
+                <option>Press</option>
+                <option>Something else</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required></textarea></div>
+          <div class="ctas"><button class="btn btn-solid" type="submit">Send enquiry</button></div>
+          <p class="form-note" id="form-error" hidden></p>
+          <div class="sent" id="form-sent" hidden><span class="sq"></span><span>Thanks. Your enquiry has been sent and we'll reply by email.</span></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot band">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-mark">Outsider<br>Art<span class="sq"></span><br>Events</div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="#events">Events</a>
+        <a href="#partners">Partners</a>
+        <a href="#what-we-do">What we do</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="legal">
+      <span>Outsider Art Events Ltd · Registered in Scotland No. [SC000000]</span>
+      <span>[Registered address]</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('menu-btn');
+  var panel = document.getElementById('mobile-nav');
+  btn.addEventListener('click', function () {
+    var open = panel.hidden;
+    panel.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Close' : 'Menu';
+  });
+  panel.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); btn.textContent = 'Menu'; }
+  });
+
+  var copyBtn = document.getElementById('copy-email');
+  var emailText = document.getElementById('email-text');
+  copyBtn.addEventListener('click', function () {
+    var text = emailText.textContent;
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(emailText);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      copyBtn.textContent = 'Selected';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { copyBtn.textContent = 'Copied'; }, selectIt);
+    } catch (e) { selectIt(); }
+    setTimeout(function () { copyBtn.textContent = 'Copy'; }, 2000);
+  });
+
+  var form = document.getElementById('enquiry');
+  var err = document.getElementById('form-error');
+  var sent = document.getElementById('form-sent');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var missing = [];
+    if (!form.name.value.trim()) missing.push('your name');
+    var em = form.email.value.trim();
+    if (!em || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) missing.push('a valid email address');
+    if (!form.message.value.trim()) missing.push('a message');
+    if (missing.length) {
+      err.textContent = 'Please add ' + missing.join(', ') + '.';
+      err.hidden = false; sent.hidden = true;
+      return;
+    }
+    err.hidden = true;
+    var btnSend = form.querySelector('button[type="submit"]');
+    btnSend.disabled = true; btnSend.textContent = 'Sending…';
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function (res) {
+      if (!res.ok) throw new Error(res.status);
+      form.reset();
+      sent.hidden = false;
+      btnSend.textContent = 'Sent';
+    }).catch(function () {
+      err.textContent = 'Your enquiry could not be sent. Please try again, or email us directly.';
+      err.hidden = false;
+      btnSend.disabled = false; btnSend.textContent = 'Send enquiry';
+    });
+  });
+})();
+</script>
+</body>
+</html>
