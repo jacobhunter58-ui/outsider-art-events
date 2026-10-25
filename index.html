@@ -29,6 +29,7 @@
   --body: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
   --wrap: 1240px;
+  --ease: cubic-bezier(.16, 1, .3, 1);
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -72,10 +73,11 @@ p { margin: 0; max-width: 62ch; }
 
 /* Hero */
 .hero { padding-block: clamp(56px, 9vw, 120px) 0; }
-.hero-grid { display: grid; gap: 32px; }
-.hero h1 { font-weight: 900; font-size: clamp(48px, 9.2vw, 132px); line-height: .86; letter-spacing: -.045em; text-transform: uppercase; max-width: 12ch; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero-copy { display: grid; gap: 32px; min-width: 0; }
+.hero h1 { font-weight: 900; font-size: clamp(44px, 6.6vw, 104px); line-height: .86; letter-spacing: -.045em; text-transform: uppercase; max-width: 12ch; }
 .hero h1 .sq { width: .26em; height: .26em; }
-.hero-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px; }
+.hero-foot { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; }
 .hero-foot p { font-size: 19px; color: #CFCBC3; max-width: 46ch; }
 .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -159,15 +161,69 @@ form { display: grid; gap: 18px; }
 .sent .sq { flex: none; margin: 6px 0 0; width: 10px; height: 10px; }
 
 /* Footer */
-.foot { padding-block: 64px 40px; border-top: 1px solid var(--line); }
+.foot { padding-block: 64px 40px; border-top: 1px solid var(--line); overflow: hidden; }
 .foot-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; align-items: flex-end; }
 .foot-mark { font-family: var(--display); font-weight: 900; font-size: clamp(48px, 7vw, 96px); line-height: .86; letter-spacing: -.04em; text-transform: uppercase; }
+.foot-mark .fl { display: block; clip-path: inset(0 -100vw -.02em -.1em); }
+.foot-mark .ft { display: inline-block; }
+.foot-armed .foot-mark .ft { transform: translateY(105%); }
+.foot-armed .foot-mark .sq { transform: translateX(60vw); }
+.foot-armed.in .foot-mark .ft { animation: rise .7s var(--ease) forwards; }
+.foot-armed.in .foot-mark .fl:nth-child(2) .ft { animation-delay: .12s; }
+.foot-armed.in .foot-mark .fl:nth-child(3) .ft { animation-delay: .24s; }
+.foot-armed.in .foot-mark .sq { animation: arrive-foot .9s var(--ease) .7s forwards; }
+
+/* Animated logos */
+@keyframes rise { to { transform: translateY(0); } }
+@keyframes mark-in { to { transform: none; opacity: 1; } }
+@keyframes arrive { from { transform: translateX(80cqw); } to { transform: translateX(0); } }
+@keyframes arrive-foot { from { transform: translateX(60vw); } to { transform: translateX(0); } }
+@keyframes plate { to { opacity: 1; transform: scale(1); } }
+@keyframes open { to { max-width: var(--w, 6em); } }
+@keyframes fade-up { to { opacity: 1; transform: none; } }
+
+.mark .sq { transform: translateX(48px); opacity: 0; animation: mark-in .8s var(--ease) .5s forwards; }
+
+.logo-stage { position: relative; display: block; width: 100%; max-width: 100%; aspect-ratio: 1 / 1; padding: 0; margin: 0; border: 1px solid var(--line); background: var(--ink-2); color: inherit; font: inherit; cursor: pointer; overflow: hidden; container-type: inline-size; }
+.logo-stage:focus-visible { outline: 2px solid var(--bone); outline-offset: 3px; }
+.logo-stage .xp { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.logo-stage .plate { display: flex; flex-direction: column; justify-content: flex-end; min-width: 46cqw; height: 46cqw; padding: 5.5cqw; background: var(--bone); color: var(--ink); font-family: var(--display); font-weight: 900; font-size: 12.4cqw; line-height: .88; letter-spacing: -.02em; text-transform: uppercase; text-align: left; }
+.logo-stage .ln { display: block; clip-path: inset(0 -200cqw -.02em -.1em); white-space: nowrap; }
+.logo-stage .tx { display: inline-block; }
+.logo-stage .rest { display: inline-block; vertical-align: top; overflow: hidden; white-space: nowrap; }
+.logo-stage .sq { width: 3.6cqw; height: 3.6cqw; margin-left: 2cqw; }
+.logo-stage .xtag { position: absolute; left: 0; right: 0; bottom: 7cqw; text-align: center; font-family: var(--mono); font-weight: 500; font-size: 2.6cqw; letter-spacing: .16em; text-transform: uppercase; color: var(--bone); }
+.logo-stage .hint { position: absolute; top: 4cqw; right: 4cqw; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--concrete); opacity: 0; transition: opacity .2s; }
+.logo-stage:hover .hint, .logo-stage:focus-visible .hint { opacity: 1; }
+
+.logo-stage.armed .plate { opacity: 0; transform: scale(.94); }
+.logo-stage.armed .tx { transform: translateY(105%); }
+.logo-stage.armed .rest { max-width: 0; }
+.logo-stage.armed .sq { transform: translateX(80cqw); }
+.logo-stage.armed .xtag { opacity: 0; transform: translateY(1.2cqw); }
+.logo-stage.armed.go .plate { animation: plate .6s var(--ease) .05s forwards; }
+.logo-stage.armed.go .tx { animation: rise .7s var(--ease) forwards; }
+.logo-stage.armed.go .ln:nth-child(1) .tx { animation-delay: .35s; }
+.logo-stage.armed.go .ln:nth-child(2) .tx { animation-delay: .5s; }
+.logo-stage.armed.go .ln:nth-child(3) .tx { animation-delay: .65s; }
+.logo-stage.armed.go .sq { animation: arrive .9s var(--ease) 1.15s forwards; }
+.logo-stage.armed.go .rest { animation: open .85s cubic-bezier(.65, 0, .35, 1) forwards; }
+.logo-stage.armed.go .ln:nth-child(1) .rest { animation-delay: 2.15s; }
+.logo-stage.armed.go .ln:nth-child(2) .rest { animation-delay: 2.3s; }
+.logo-stage.armed.go .ln:nth-child(3) .rest { animation-delay: 2.45s; }
+.logo-stage.armed.go .xtag { animation: fade-up .6s var(--ease) 3.4s forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mark .sq { transform: none; opacity: 1; }
+}
 .foot-links { display: grid; grid-template-columns: repeat(2, auto); gap: 10px 48px; font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
 .foot-links a { text-decoration: none; color: var(--concrete); padding: 4px 0; }
 .foot-links a:hover { color: var(--bone); }
 .legal { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
 
 @media (max-width: 900px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .logo-stage { max-width: 440px; }
   .nav a.link, .nav .btn { display: none; }
   .menu-btn { display: inline-flex; align-items: center; }
   .event, .manifesto, .contact-grid { grid-template-columns: minmax(0, 1fr); }
@@ -211,15 +267,28 @@ form { display: grid; gap: 18px; }
 <main id="top">
   <section class="hero band" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
-      <div class="label">Events management — Glasgow</div>
-      <h1 id="hero-title">Culture, delivered properly<span class="sq"></span></h1>
-      <div class="hero-foot">
-        <p>We produce culture-led events with the rigour of an institution. Venues, contracts, artists, ticketing and safety are handled before the doors open, so the work on show can be as unconventional as it likes.</p>
-        <div class="ctas">
-          <a class="btn btn-solid" href="#partners">Partner with us</a>
-          <a class="btn btn-line" href="#events">Our events</a>
+      <div class="hero-copy">
+        <div class="label">Events management — Glasgow</div>
+        <h1 id="hero-title">Culture, delivered properly<span class="sq"></span></h1>
+        <div class="hero-foot">
+          <p>We produce culture-led events with the rigour of an institution. Venues, contracts, artists, ticketing and safety are handled before the doors open, so the work on show can be as unconventional as it likes.</p>
+          <div class="ctas">
+            <a class="btn btn-solid" href="#partners">Partner with us</a>
+            <a class="btn btn-line" href="#events">Our events</a>
+          </div>
         </div>
       </div>
+      <button class="logo-stage" id="logo-stage" type="button" aria-label="Outsider Art Events logo. Select to replay the animation.">
+        <span class="hint" aria-hidden="true">Replay</span>
+        <span class="xp" aria-hidden="true">
+          <span class="plate">
+            <span class="ln"><span class="tx">O<span class="rest">utsider</span></span></span>
+            <span class="ln"><span class="tx">A<span class="rest">rt</span></span></span>
+            <span class="ln"><span class="tx">E<span class="rest">vents</span></span><span class="sq"></span></span>
+          </span>
+          <span class="xtag">From the outside, in.</span>
+        </span>
+      </button>
     </div>
     <div class="wrap next">
       <a href="#events">
@@ -407,7 +476,7 @@ form { display: grid; gap: 18px; }
 <footer class="foot band">
   <div class="wrap">
     <div class="foot-top">
-      <div class="foot-mark">Outsider<br>Art<span class="sq"></span><br>Events</div>
+      <div class="foot-mark" role="img" aria-label="Outsider Art Events"><span class="fl"><span class="ft">Outsider</span></span><span class="fl"><span class="ft">Art</span><span class="sq"></span></span><span class="fl"><span class="ft">Events</span></span></div>
       <nav class="foot-links" aria-label="Footer">
         <a href="#events">Events</a>
         <a href="#partners">Partners</a>
@@ -423,6 +492,44 @@ form { display: grid; gap: 18px; }
 </footer>
 
 <script>
+(function () {
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+
+  // Hero logo: OAE opens into the full name
+  var stage = document.getElementById('logo-stage');
+  stage.classList.add('armed');
+  function measure() {
+    stage.querySelectorAll('.rest').forEach(function (el) {
+      el.style.setProperty('--w', el.scrollWidth + 'px');
+    });
+  }
+  function play() {
+    stage.classList.remove('go');
+    void stage.offsetWidth;
+    measure();
+    stage.classList.add('go');
+  }
+  stage.addEventListener('click', play);
+  window.addEventListener('resize', function () { if (stage.classList.contains('go')) measure(); });
+  var started = false;
+  function start() { if (!started) { started = true; play(); } }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+  setTimeout(start, 1500);
+
+  // Footer wordmark builds when it scrolls into view
+  var foot = document.querySelector('.foot');
+  if ('IntersectionObserver' in window) {
+    foot.classList.add('foot-armed');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { foot.classList.add('in'); io.disconnect(); }
+      });
+    }, { threshold: 0.35 });
+    io.observe(foot);
+  }
+})();
+
 (function () {
   var btn = document.getElementById('menu-btn');
   var panel = document.getElementById('mobile-nav');
