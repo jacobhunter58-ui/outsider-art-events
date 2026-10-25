@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://outsiderevents.co.uk/sitemap.xml

@@ -7,3 +7,10 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Frame-Options = "SAMEORIGIN"
+
+# Send the Netlify subdomain to the main domain so search engines only index one address
+[[redirects]]
+  from = "https://outsider-art-events.netlify.app/*"
+  to = "https://outsiderevents.co.uk/:splat"
+  status = 301
+  force = true
